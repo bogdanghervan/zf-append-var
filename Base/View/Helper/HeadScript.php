@@ -16,7 +16,7 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
      */
     const VARIABLE = 'VAR';
     /**#@-*/
-	
+    
     /**
      * Returns headScript object.
      *
@@ -45,17 +45,17 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
                     $action = 'append' . $action;
                     break;
             }
-			if (is_string($spec)) {
-				$this->$action($spec, $type, $attrs);
-			} else {
-				list($name, $value) = $spec;
-				$this->$action($name, $value, $type, $attrs);
-			}
+            if (is_string($spec)) {
+                $this->$action($spec, $type, $attrs);
+            } else {
+                list($name, $value) = $spec;
+                $this->$action($name, $value, $type, $attrs);
+            }
         }
 
         return $this;
     }
-	
+    
     /**
      * Overloads method access.
      *
@@ -89,7 +89,7 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
             }
 
             $action = $matches['action'];
-			$type   = 'text/javascript';
+            $type   = 'text/javascript';
             $attrs  = array();
 
             if ('offsetSet' == $action) {
@@ -103,21 +103,21 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
             }
 
             $name = $args[0];
-			$value = $args[1];
-			
+            $value = $args[1];
+            
             if (isset($args[2])) {
                 $type = (string) $args[1];
             }
             if (isset($args[3])) {
                 $attrs = (array) $args[2];
             }
-			
-			$item = $this->createVar($name, $value, $type, $attrs);
-			if ('offsetSet' == $action) {
-				$this->offsetSet($index, $item);
-			} else {
-				$this->$action($item);
-			}
+            
+            $item = $this->createVar($name, $value, $type, $attrs);
+            if ('offsetSet' == $action) {
+                $this->offsetSet($index, $item);
+            } else {
+                $this->$action($item);
+            }
 
             return $this;
         }
@@ -145,31 +145,31 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
         $escapeStart = ($useCdata) ? '//<![CDATA[' : '//<!--';
         $escapeEnd   = ($useCdata) ? '//]]>'       : '//-->';
 
-		// Collect variables and bundle them together in a single script tag at the beginning
+        // Collect variables and bundle them together in a single script tag at the beginning
         $vars = array();
-		$items = array();
+        $items = array();
         $this->getContainer()->ksort();
         foreach ($this as $item) {
             if (!$this->_isValid($item)) {
                 continue;
             }
-			
-			if (isset($item->name)) {
-				$vars[] = sprintf('%s = %s', $item->name, Zend_Json::encode($item->source));
-			} else {
-				$items[] = $this->itemToString($item, $indent, $escapeStart, $escapeEnd);
-			}
+            
+            if (isset($item->name)) {
+                $vars[] = sprintf('%s = %s', $item->name, Zend_Json::encode($item->source));
+            } else {
+                $items[] = $this->itemToString($item, $indent, $escapeStart, $escapeEnd);
+            }
         }
 
         $script = sprintf('var %s;', implode(', ', $vars));
-		$item = $this->createData('text/javascript', array(), $script);
-		
-		$return = $this->itemToString($item, $indent, $escapeStart, $escapeEnd)
-			. $this->getSeparator() . implode($this->getSeparator(), $items);
-		
+        $item = $this->createData('text/javascript', array(), $script);
+        
+        $return = $this->itemToString($item, $indent, $escapeStart, $escapeEnd)
+            . $this->getSeparator() . implode($this->getSeparator(), $items);
+        
         return $return;
     }
-	
+    
     /**
      * Create data item for a variable.
      *
@@ -179,13 +179,13 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
      * @param  array $attributes
      * @return stdClass
      */
-	public function createVar($name, $value, $type, array $attributes)
-	{
-		$data			  = new stdClass();
-		$data->type		  = $type;
-		$data->attributes = $attributes;
-		$data->source	  = $value;
-		$data->name		  = $name;
-		return $data;
-	}
+    public function createVar($name, $value, $type, array $attributes)
+    {
+        $data             = new stdClass();
+        $data->type       = $type;
+        $data->attributes = $attributes;
+        $data->source     = $value;
+        $data->name       = $name;
+        return $data;
+    }
 }
