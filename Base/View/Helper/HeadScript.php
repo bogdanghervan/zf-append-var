@@ -2,13 +2,13 @@
 /**
  * Helper that extends HeadScript to make it easier to pass variables to JavaScript.
  *
- * @category Lk
- * @package Lk_View
+ * @category Base
+ * @package Base_View
  * @subpackage Helper
  * @author Bogdan Ghervan <bogdan.ghervan@gmail.com>
  * @copyright Copyright (c) 2013 Bogdan Ghervan (http://ghervan.com/)
  **/
-class Lk_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
+class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
 {
     /**#@+
      * Script type constants
