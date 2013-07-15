@@ -161,12 +161,16 @@ class Base_View_Helper_HeadScript extends Zend_View_Helper_HeadScript
                 $items[] = $this->itemToString($item, $indent, $escapeStart, $escapeEnd);
             }
         }
-
-        $script = sprintf('var %s;', implode(', ', $vars));
-        $item = $this->createData('text/javascript', array(), $script);
-        
-        $return = $this->itemToString($item, $indent, $escapeStart, $escapeEnd)
-            . $this->getSeparator() . implode($this->getSeparator(), $items);
+		
+		$return = implode($this->getSeparator(), $items);
+		
+		// Prepend script tag holding variables
+		if ($vars) {
+			$script = sprintf('var %s;', implode(', ', $vars));
+			$item = $this->createData('text/javascript', array(), $script);
+			$return = $this->itemToString($item, $indent, $escapeStart, $escapeEnd)
+				. $this->getSeparator() . $return;
+		}
         
         return $return;
     }
