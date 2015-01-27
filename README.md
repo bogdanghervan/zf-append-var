@@ -81,8 +81,8 @@ autoloaderNamespaces.base = "Base_"
 protected function _initView()
 {
     $this->bootstrap('view');
-		$view = $this->getResource('view');
-		$view->addHelperPath('Base/View/Helper/', 'Base_View_Helper');	
+    $view = $this->getResource('view');
+    $view->addHelperPath('Base/View/Helper/', 'Base_View_Helper');	
 }
 ```
 ... and we're done!
