@@ -44,7 +44,7 @@ var bookingIds = [9006,9007], baseUrl = "http:\/\/www.example.com\/", isLoggedIn
 
 All the methods that you'd expect in a container-style view helper (like `Zend_View_Helper_HeadScript` or `Zend_View_Helper_HeadStyle`) are supported.
 In most cases you will only need `appendVar`, but you can combine the methods below
-to control the order JavaScript variables are instantiated in the outputted code.
+to control the order JavaScript variables show up in the outputted code.
 #### appendVar
 Appends a variable (will show up last in the outputted code).
 ```PHP
