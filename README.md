@@ -52,7 +52,7 @@ public function appendVar($name, $value, $type = 'text/javascript', $attrs = arr
 ```
 
 #### offsetSetVar
-Inserts a variable at the specified $index position.
+Inserts a variable at the specified `$index` position.
 ```PHP
 public function offsetSetVar($index, $name, $value, $type = 'text/javascript', $attrs = array());
 ```
