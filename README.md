@@ -87,6 +87,8 @@ protected function _initView()
 ```
 ... and we're done!
 
+Please note that this helper is not compatible with Zend Framework 2.
+
 ## License
 
 New BSD License
