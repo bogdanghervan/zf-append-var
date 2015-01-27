@@ -1,5 +1,5 @@
 # zf-append-var
-View helper that makes it easy to pass any type of data to JavaScript in Zend Framework 1 using a beautiful syntax. It extends on `Zend_View_Helper_HeadScript`.
+View helper that makes it easy to pass any type of data to JavaScript in Zend Framework 1 using a beautiful syntax.
 
 ## Usage
 
