@@ -70,8 +70,8 @@ public function setVar($name, $value, $type = 'text/javascript', $attrs = array(
 ```
 
 ## Installation
-
-* Just copy `Base/View/Helper/HeadScript.php` to your `/library` folder in your Zend Framework 1 installation.
+* [Download](https://github.com/bogdanghervan/zf-append-var/archive/master.zip) the code.
+* Copy the `Base` directory inside the downloaded archive to your `/library` folder in your Zend Framework 1 installation.
 * Make sure the `Base` namespace is autoloaded by adding this directive to your `application.ini` file(s):
 ```ini
 autoloaderNamespaces.base = "Base_"
